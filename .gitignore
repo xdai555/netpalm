@@ -3,5 +3,6 @@
 .idea
 *.pyc
 venv
+test.py
 backend/plugins/extensibles/ntc-templates/
 backend/plugins/extensibles/ntc-templates
