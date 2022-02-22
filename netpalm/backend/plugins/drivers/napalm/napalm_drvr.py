@@ -8,8 +8,10 @@ class naplm:
     def __init__(self, **kwargs):
         self.connection_args = kwargs.get("connection_args", False)
         #convert the netmiko naming format to the native napalm format
-        driver_lookup = {"arista_eos":"eos","juniper":"junos","cisco_xr":"iosxr", "nxos":"nxos", "cisco_nxos_ssh":"nxos_ssh", "cisco_ios":"ios"}
-        self.driver = driver_lookup[self.connection_args.get("device_type", False)]
+        # driver_lookup = {"arista_eos":"eos","juniper":"junos","cisco_xr":"iosxr", "nxos":"nxos", "cisco_nxos_ssh":"nxos_ssh", "cisco_ios":"ios"}
+        # self.driver = driver_lookup[self.connection_args.get("device_type", False)]
+        # 直接读取前端传入的设备类型，交给 napalm 来处理
+        self.driver = self.connection_args.get("device_type", False)
         self.connection_args["hostname"] = self.connection_args.pop("host")
         del self.connection_args["device_type"]
 
