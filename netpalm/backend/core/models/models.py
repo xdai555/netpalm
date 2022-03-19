@@ -64,6 +64,7 @@ class SetConfig(BaseModel):
     pre_checks: Optional[List[GenericPrePostCheck]] = None
     post_checks: Optional[List[GenericPrePostCheck]] = None
     enable_mode: bool = False
+    ttl: Optional[int] = None
 
     class Config:
         schema_extra = {
@@ -102,24 +103,6 @@ class SetConfig(BaseModel):
         }
 
 
-class Script(BaseModel):
-    script: str
-    args: Optional[dict] = None
-    webhook: Optional[Webhook] = None
-    queue_strategy: Optional[QueueStrategy] = None
-
-    class Config:
-        schema_extra = {
-            "example": {
-                "script": "hello_world",
-                "args": {
-                    "hello": "world"
-                },
-                "queue_strategy": "fifo"
-            }
-        }
-
-
 class CacheConfig(BaseModel):
     enabled: bool = False
     ttl: Optional[int] = None
@@ -134,6 +117,39 @@ class CacheConfig(BaseModel):
             }
         }
 
+class Script(BaseModel):
+    script: str
+    args: Optional[dict] = None
+    webhook: Optional[Webhook] = None
+    queue_strategy: Optional[QueueStrategy] = None
+    cache: Optional[CacheConfig] = {}
+    ttl: Optional[int] = None
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "script": "hello_world",
+                "args": {
+                    "hello": "world"
+                },
+                "queue_strategy": "fifo"
+            }
+        }
+
+class ScriptCustom(BaseModel):
+    script: str
+    webhook: Optional[Webhook] = None
+    queue_strategy: Optional[QueueStrategy] = None
+    cache: Optional[CacheConfig] = {}
+    ttl: Optional[int] = None
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "script": "hello_world",
+                "queue_strategy": "fifo"
+            }
+        }
 
 class GetConfig(BaseModel):
     library: LibraryName
@@ -144,6 +160,7 @@ class GetConfig(BaseModel):
     queue_strategy: Optional[QueueStrategy] = None
     post_checks: Optional[List[GenericPrePostCheck]] = []
     cache: Optional[CacheConfig] = {}
+    ttl: Optional[int] = None
 
     class Config:
         schema_extra = {

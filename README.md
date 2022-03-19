@@ -273,7 +273,7 @@ Edit the `config/config.json` file to change any parameters
     "txtfsm_template_server":"http://textfsm.nornir.tech",
     "custom_scripts":"backend/plugins/custom_scripts/",
     "jinja2_config_templates":"backend/plugins/jinja2_templates/",
-    "jinja2_service_templates":"backend/plugins/service_templates/",
+    "python_service_templates":"backend/plugins/services/",
     "self_api_call_timeout":15
 }
 ```
@@ -323,3 +323,4 @@ We are open to contributions, before making a PR, please make sure you've read o
 
 You can also find us in the channel `#netpalm` on the [networktocode Slack](https://networktocode.slack.com).
 
+ 

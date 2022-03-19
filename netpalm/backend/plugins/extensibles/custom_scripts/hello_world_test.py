@@ -4,7 +4,7 @@
 # {
 # 	"script":"hello_world",
 # 	"args":{
-# 		"yes":"world"
+# 		"hello":"world"
 # 	}
 # }
 #
@@ -12,8 +12,8 @@ def run(**kwargs):
     try:
         # mandatory get of kwargs - payload comes through as {"kwargs": {"hello": "world"}}
         args = kwargs.get("kwargs")
-        # access your vars here in a dict format - payload is now {"yes": "world"}
-        world = args["yes"]
+        # access your vars here in a dict format - payload is now {"hello": "world"}
+        world = args["hello"]
         # reutn "world"
         return world
     except KeyError as e:
